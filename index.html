@@ -17,13 +17,27 @@
         header {
             background: #333;
             color: #fff;
-            padding: 1rem 0;
+            padding: 1rem;
             text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ajuste a ordem de empilhamento conforme necessário */
+        }
+        header #menu-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
         }
         nav {
             background: #555;
             color: #fff;
             padding: 0.5rem 0;
+            
         }
         nav ul {
             list-style: none;
@@ -62,11 +76,15 @@
             margin-bottom: 0.5rem; /* Add some space below the headings */
         }
 
+       
         .card:hover{
             transform: scale(1.1);
-            transition: 2s;
+          
            box-shadow: rgba(89,101,101, 0.4) 5px 5px, rgba(89,101,101, 0.3) 10px 10px, rgba(89,101,101, 0.2) 15px 15px, rgba(89,101,101, 0.1) 20px 20px, rgba(89,101,101, 0.0) 25px 25px;
+         
+            transition: transform 2s, box-shadow 2s; /* Adiciona a transição reversa para a transformação e para a sombra */
         }
+        
         footer {
             background: #333;
             color: #fff;
@@ -88,10 +106,66 @@
         #texto{
             cursor: pointer;
         }
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* Esconder a navegação em telas menores que 768px */
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            .submenu {
+                display: block; /* Exibir o submenu em telas menores que 768px */
+            }
+        }
+        .submenu {
+            display: none;
+            background: #333;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px; /* Ajuste a largura conforme necessário */
+            height: 100%; /* Faça a barra lateral ocupar toda a altura da tela */
+            padding-top: 60px; /* Espaço acima do conteúdo do submenu */
+        }
+        .submenu a {
+            display: block;
+            color: #fff;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            
+        }
+        .submenu a:hover {
+            background: #777;
+        }
     </style>
+    <script>
+        function toggleSubmenu() {
+            var submenu = document.getElementById('submenu');
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
+        <div class="container">
+            <ul>
+                <li><a href="#" onclick="toggleSubmenu()">☰</a>
+                    <div id="submenu" class="submenu">
+                        <a href="#sobre">Sobre Mim</a>
+                        <a href="#projetos">Projetos</a>
+                        <a href="#habilidades">Habilidades</a>
+                        <a href="#contato">Contato</a>
+                        <a href="https://www.instagram.com/riicardoc_?igsh=MTNwbDFxNjhua2UybQ==">Instagram</a>
+                        <a href="https://wa.me/5528999021611">Whatsapp</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <h1>Portfólio <span id="texto">Ricardo Cardozo</span></h1>
     </header>
     <nav>
