@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Portfólio</title>
     <style>
+        header #menu-button {
+            position: fixed; /* Alterado de absolute para fixed */
+            top: 10px;
+            left: 10px;
+            z-index: 2000; /* Certifique-se de que esteja acima de outros elementos */
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+       header #page-title{
+            position: fixed;
+            top: 10px;
+            left: 100px;
+            text-align: center;
+
+        }
+        #menu-button {
+           font-size: 24px;
+          cursor: pointer;
+          margin-right: 10px; /* Espaço entre o botão e o título */     
+        }
+        #page-title {
+          margin: 0; /* Remove a margem padrão do título */
+          font-size: 24px; /* Ajuste o tamanho da fonte conforme necessário */
+        }
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -17,22 +42,21 @@
         header {
             background: #333;
             color: #fff;
-            padding: 1rem;
+            padding: 2.4rem;
             text-align: center;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000; /* Ajuste a ordem de empilhamento conforme necessário */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: space-between; /* Espaço entre os itens */
+           
         }
-        header #menu-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
+        .header-container {
+           display: flex;
+           align-items: center;
+      }
         nav {
             background: #555;
             color: #fff;
@@ -42,6 +66,7 @@
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         nav ul li {
             display: inline;
@@ -50,6 +75,7 @@
         nav ul li a {
             color: #fff;
             text-decoration: none;
+            font-size: 16px;
         }
         .container {
             width: 80%;
@@ -117,6 +143,10 @@
             .submenu {
                 display: block; /* Exibir o submenu em telas menores que 768px */
             }
+            header{
+                padding: 1rem;
+            }
+           
         }
         .submenu {
             display: none;
@@ -135,8 +165,31 @@
             text-decoration: none;
             
         }
+        li{
+            list-style: none;
+        }
         .submenu a:hover {
             background: #777;
+        }
+        @media (min-width: 768px) {
+             #menu-button {
+                  display: none; /* Esconde o botão do menu */
+             }
+             
+        nav {
+            display: block;
+            background: #555;
+            color: #fff;
+            padding: 0.5rem 0;
+            
+        }
+             #page-title{
+                  font-size: 50px;
+            }
+
+            .header{
+                display: none;
+            }
         }
     </style>
     <script>
@@ -152,9 +205,9 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="header-container">
             <ul>
-                <li><a href="#" onclick="toggleSubmenu()">☰</a>
+                <li><a id="menu-button" href="#" onclick="toggleSubmenu()">☰</a></li>
                     <div id="submenu" class="submenu">
                         <a href="#sobre">Sobre Mim</a>
                         <a href="#projetos">Projetos</a>
@@ -165,10 +218,11 @@
                     </div>
                 </li>
             </ul>
+        <h1 id="page-title">Portfólio <span id="texto">Ricardo Cardozo</span></h>
         </div>
-        <h1>Portfólio <span id="texto">Ricardo Cardozo</span></h1>
     </header>
     <nav>
+        <h1 id="page-title">Portfólio <span id="texto">Ricardo Cardozo</span></h>
         <div class="container">
             <ul>
                 <li><a href="#sobre">Sobre Mim</a></li>
